@@ -1,4 +1,4 @@
-import { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
+import maplibre, { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
 import * as Cesium from "cesium";
 
 class VectorProvider {
@@ -17,7 +17,35 @@ class VectorProvider {
    */
   constructor(options) {
     console.log(options.style);
-    this.mapboxRenderer = new BasicRenderer({ style: options.style });
+    const transformRequest = (url, type) => {
+      if (!url.startsWith("mapbox://")) {
+        return { url };
+      }
+
+      let prefix = "https://api.mapbox.com/";
+      let suffix = "";
+      if (type === "SpriteJSON" || type === "SpriteImage") {
+        prefix += "styles/v1/";
+        url = url.replace("mapbox://sprites/", prefix);
+        url = url.replace("@2x.png", "/sprite@2x.png");
+        url = url.replace("@2x.json", "/sprite@2x.json");
+      } else if (type == "Source") {
+        prefix += "v4/";
+        url = url.replace("mapbox://", prefix);
+        url += ".json";
+      } else {
+        url = url.replace("mapbox://", prefix);
+      }
+
+      url += "?access_token=" + maplibre.accessToken;
+      return { url };
+    };
+
+    this.mapboxRenderer = new BasicRenderer({
+      style: options.style,
+      transformRequest,
+    });
+
     this.ready = false;
     this.readyPromise = this.mapboxRenderer._style.loadedPromise.then(() => {
       this.ready = true;
