@@ -20,7 +20,6 @@ class VectorProvider {
     this.mapboxRenderer = new BasicRenderer({ style: options.style });
     this.ready = false;
     this.readyPromise = this.mapboxRenderer._style.loadedPromise.then(() => {
-      console.log("Mapbox vector provider ready");
       this.ready = true;
     });
     this.tilingScheme = new Cesium.WebMercatorTilingScheme();
@@ -54,8 +53,6 @@ class VectorProvider {
   requestImage(x, y, zoom, releaseTile = true) {
     if (zoom > this.maximumLevel || zoom < this.minimumLevel)
       return Promise.reject(undefined);
-
-    console.log("Requesting image");
 
     this.mapboxRenderer.filterForZoom(zoom);
     const tilesSpec = [];
