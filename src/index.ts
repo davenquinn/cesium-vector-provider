@@ -18,9 +18,12 @@ class VectorProvider {
   constructor(options) {
     console.log(options.style);
     const transformRequest = (url, type) => {
+      // There has got to be a better way to do this...
       if (!url.startsWith("mapbox://")) {
         return { url };
       }
+
+      console.log(url, type);
 
       let prefix = "https://api.mapbox.com/";
       let suffix = "";
@@ -29,6 +32,8 @@ class VectorProvider {
         url = url.replace("mapbox://sprites/", prefix);
         url = url.replace("@2x.png", "/sprite@2x.png");
         url = url.replace("@2x.json", "/sprite@2x.json");
+      } else if (type === "Style") {
+        url = url.replace("mapbox://styles/", prefix + "styles/v1/");
       } else if (type == "Source") {
         prefix += "v4/";
         url = url.replace("mapbox://", prefix);
@@ -45,6 +50,8 @@ class VectorProvider {
       style: options.style,
       transformRequest,
     });
+
+    //this.mapboxRenderer.showCanvasForDebug();
 
     this.ready = false;
     this.readyPromise = this.mapboxRenderer._style.loadedPromise.then(() => {
@@ -63,6 +70,7 @@ class VectorProvider {
       options.hasAlphaChannel !== undefined ? options.hasAlphaChannel : true;
     //this.cesiumviewer = options.cesiumViewer;
     this.sourceFilter = options.sourceFilter;
+    //this.mapboxRenderer.showCanvasForDebug(true);
   }
 
   getTileCredits(x, y, level) {
