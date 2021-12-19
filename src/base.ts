@@ -90,8 +90,6 @@ class VectorProvider {
       });
     });
 
-    console.log(tilesSpec);
-
     return new Promise((resolve, reject) => {
       let canv = this.createTile();
       const renderRef = this.mapboxRenderer.renderTiles(
