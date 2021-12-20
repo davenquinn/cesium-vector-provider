@@ -1,4 +1,4 @@
-import maplibre, { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
+import { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
 import * as Cesium from "cesium";
 
 class VectorProvider {
@@ -67,7 +67,12 @@ class VectorProvider {
     return canv;
   }
 
-  requestImage(x, y, zoom, releaseTile = true) {
+  requestImage(
+    x,
+    y,
+    zoom,
+    releaseTile = true
+  ): Promise<HTMLImageElement | HTMLCanvasElement> | undefined {
     if (zoom > this.maximumLevel || zoom < this.minimumLevel)
       return Promise.reject(undefined);
 

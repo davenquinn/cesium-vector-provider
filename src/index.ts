@@ -1,5 +1,28 @@
 import BaseVectorProvider from "./base";
 import maplibre from "maplibre-gl/dist/maplibre-gl-dev";
+import { HillshadeImageryProvider } from "../../cesium-viewer/src/layers";
+
+async function canvasToImage(canvas: HTMLCanvasElement) {
+  const img = new Image();
+  return new Promise((resolve) => {
+    img.onload = function () {
+      resolve(img);
+    };
+    img.crossOrigin = "";
+    img.src = canvas.toDataURL("image/png");
+  });
+}
+
+async function coloredCanvas(color) {
+  var canvas = document.createElement("canvas");
+  var ctx = canvas.getContext("2d");
+  // Add behind elements.
+  ctx.globalCompositeOperation = "destination-over";
+  // Now draw!
+  ctx.fillStyle = color;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  return await canvasToImage(canvas);
+}
 
 class MapboxVectorProvider extends BaseVectorProvider {
   /**
@@ -16,6 +39,19 @@ class MapboxVectorProvider extends BaseVectorProvider {
    *
    */
   showCanvas: boolean;
+
+  hillshadeRenderer: HillshadeImageryProvider;
+
+  constructor(options) {
+    super(options);
+    this.hillshadeRenderer = new HillshadeImageryProvider({
+      mapId: "mapbox.terrain-rgb",
+      maximumLevel: 14,
+      accessToken: maplibre.accessToken,
+      highResolution: true,
+      format: "@2x.png",
+    });
+  }
 
   transformRequest(url, type) {
     // A transform request function for Mapbox styles
@@ -43,6 +79,42 @@ class MapboxVectorProvider extends BaseVectorProvider {
 
     url += "?access_token=" + maplibre.accessToken;
     return { url };
+  }
+
+  requestImage(
+    x: any,
+    y: any,
+    zoom: any,
+    request: any
+  ): Promise<HTMLCanvasElement | HTMLImageElement> | undefined {
+    const mainPromise = super
+      .requestImage(x, y, zoom, request)
+      ?.then(canvasToImage);
+
+    //return mainPromise;
+
+    //const maskPromise = coloredCanvas("#ffffff");
+
+    //   .then((img: HTMLCanvasElement | undefined) => {
+    //     if (img === undefined) return;
+    //     return createImageBitmap(img);
+    //   });
+    // if (mainPromise == null) return undefined;
+    const hillshadePromise = this.hillshadeRenderer.requestBaseImage(
+      x,
+      y,
+      zoom,
+      request
+    );
+
+    if (mainPromise == null || hillshadePromise == null) return undefined;
+
+    // return mainPromise;
+    return this.hillshadeRenderer.maskImage(hillshadePromise, mainPromise, {
+      x,
+      y,
+      z: zoom,
+    });
   }
 }
 
