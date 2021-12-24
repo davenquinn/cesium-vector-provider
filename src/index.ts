@@ -46,7 +46,7 @@ class MapboxVectorProvider extends BaseVectorProvider {
     super(options);
     this.hillshadeRenderer = new HillshadeImageryProvider({
       mapId: "mapbox.terrain-rgb",
-      maximumLevel: 14,
+      maximumLevel: options.maximumLevel,
       accessToken: maplibre.accessToken,
       highResolution: true,
       format: "@2x.png",
