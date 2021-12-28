@@ -4,8 +4,19 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "example": "cd example && webpack --watch",
+    "watch:maplibre": "cd packages/maplibre-gl && npm run watch",
+    "dev": "npm run watch:maplibre & npm run example",
+    "postinstall": "npm --prefix example install"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@macrostrat/cesium-martini": "^1.2.3",
+    "cesium": "^1.81.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
