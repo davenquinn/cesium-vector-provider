@@ -1,6 +1,7 @@
 import BaseVectorProvider from "./base";
-import maplibre from "maplibre-gl/dist/maplibre-gl-dev";
-import { HillshadeImageryProvider } from "../../cesium-viewer/src/layers";
+import maplibre, { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
+import { HillshadeImageryProvider } from "@macrostrat/cesium-viewer/layers";
+import * as Cesium from "cesium";
 
 async function canvasToImage(canvas: HTMLCanvasElement) {
   const img = new Image();
@@ -51,6 +52,20 @@ class MapboxVectorProvider extends BaseVectorProvider {
       highResolution: true,
       format: "@2x.png",
     });
+    this.tilingScheme = new Cesium.WebMercatorTilingScheme();
+    this.rectangle = this.tilingScheme.rectangle;
+    this.tileSize = this.tileWidth = this.tileHeight = options.tileSize || 512;
+    this.maximumLevel = options.maximumLevel || Number.MAX_SAFE_INTEGER;
+    this.minimumLevel = options.minimumLevel || 0;
+    this.tileDiscardPolicy = undefined;
+    //this.errorEvent = new Cesium.Event();
+    this.credit = new Cesium.Credit(options.credit || "", false);
+    this.proxy = new Cesium.DefaultProxy("");
+    this.hasAlphaChannel =
+      options.hasAlphaChannel !== undefined ? options.hasAlphaChannel : true;
+    //this.cesiumviewer = options.cesiumViewer;
+    this.sourceFilter = options.sourceFilter;
+    //this.mapboxRenderer.showCanvasForDebug(true);
   }
 
   transformRequest(url, type) {

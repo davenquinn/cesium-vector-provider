@@ -22,7 +22,7 @@ class VectorProvider {
 
     this.mapboxRenderer = new BasicRenderer({
       style: options.style,
-      transformRequest: this.transformRequest,
+      transformRequest: (url, type) => this.transformRequest(url, type),
     });
 
     if (this.showCanvas) {
