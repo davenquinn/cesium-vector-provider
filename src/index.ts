@@ -1,5 +1,5 @@
 import BaseVectorProvider from "./base";
-const maplibre = require("../packages/maplibre-gl/dist/maplibre-gl-dev");
+import maplibre from "maplibre-gl/dist/maplibre-gl-dev";
 const { BasicRenderer } = maplibre;
 // import maplibre, {
 //   BasicRenderer,

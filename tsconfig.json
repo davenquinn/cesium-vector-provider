@@ -14,7 +14,7 @@
     "outDir": "dist/lib",
     "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@macrostrat/cesium-hillshade": ["packages/cesium-hillshade/src/"]
+      "@macrostrat/cesium-hillshade": ["./packages/cesium-hillshade/src/**/*"]
     }
   },
   "include": ["src", "packages/*/src"]

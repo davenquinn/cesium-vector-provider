@@ -1,6 +1,4 @@
-const {
-  BasicRenderer,
-} = require("../packages/maplibre-gl/dist/maplibre-gl-dev");
+import maplibre from "maplibre-gl/dist/maplibre-gl-dev";
 import * as Cesium from "cesium";
 
 class VectorProvider {
@@ -22,7 +20,9 @@ class VectorProvider {
   constructor(options) {
     this.showCanvas = options.showCanvas ?? false;
 
-    this.mapboxRenderer = new BasicRenderer({
+    console.log(maplibre);
+
+    this.mapboxRenderer = new maplibre.BasicRenderer({
       style: options.style,
       transformRequest: (url, type) => this.transformRequest(url, type),
     });
