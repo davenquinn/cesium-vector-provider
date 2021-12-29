@@ -44,6 +44,7 @@ class MapboxVectorProvider extends BaseVectorProvider {
    *
    */
   showCanvas: boolean;
+  accessToken: string;
 
   hillshadeRenderer: HillshadeImageryProvider;
 
@@ -52,7 +53,7 @@ class MapboxVectorProvider extends BaseVectorProvider {
     this.hillshadeRenderer = new HillshadeImageryProvider({
       mapId: "mapbox.terrain-rgb",
       maximumLevel: options.maximumLevel,
-      accessToken: maplibre.accessToken,
+      accessToken: options.accessToken,
       highResolution: true,
       format: "@2x.png",
     });
@@ -96,7 +97,10 @@ class MapboxVectorProvider extends BaseVectorProvider {
       url = url.replace("mapbox://", prefix);
     }
 
-    url += "?access_token=" + maplibre.accessToken;
+    if (this.accessToken != null) {
+      url += "?access_token=" + this.accessToken;
+    }
+
     return { url };
   }
 

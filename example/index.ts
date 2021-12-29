@@ -11,6 +11,7 @@ import { render } from "react-dom";
 import { useRef, useEffect } from "react";
 import h from "@macrostrat/hyper";
 import { Viewer, ImageryLayer, useCesium } from "resium";
+import reliefShading from "./relief-shading";
 
 const terrainProvider = new TerrainProvider({
   // @ts-ignore
@@ -36,9 +37,11 @@ const SatelliteLayer = (props) => {
 function BaseLayer({ enabled = true, style, ...rest }) {
   const provider = useRef(
     new MVTImageryProvider({
-      style: "mapbox://styles/jczaplewski/ckxeiii3a1jv415o8rxvgqlpd", //
+      style: reliefShading, //"mapbox://styles/jczaplewski/ckxeiii3a1jv415o8rxvgqlpd", //
       maximumZoom: 15,
       tileSize: 512,
+      accessToken: process.env.MAPBOX_API_TOKEN,
+      showCanvas: true,
     })
   );
 
