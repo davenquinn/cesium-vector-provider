@@ -1,6 +1,10 @@
 import BaseVectorProvider from "./base";
-import maplibre, { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
-import { HillshadeImageryProvider } from "@macrostrat/cesium-viewer/layers";
+const maplibre = require("../packages/maplibre-gl/dist/maplibre-gl-dev");
+const { BasicRenderer } = maplibre;
+// import maplibre, {
+//   BasicRenderer,
+// } from "../packages/maplibre-gl/dist/maplibre-gl-dev";
+import HillshadeImageryProvider from "@macrostrat/cesium-hillshade";
 import * as Cesium from "cesium";
 
 async function canvasToImage(canvas: HTMLCanvasElement) {

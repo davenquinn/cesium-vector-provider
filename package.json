@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack serve ./example/index.ts",
-    "dev": "npm --prefix packages/maplibre-gl run build-glsl && npm --prefix packages/maplibre-gl run watch-dev & npm run watch"
+    "dev": "npm --prefix packages/maplibre-gl run build-glsl && npm --prefix packages/maplibre-gl run watch-dev & npm run watch",
+    "bootstrap": "scripts/setup"
   },
   "author": "",
   "license": "ISC",
@@ -37,5 +38,6 @@
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.1"
-  }
+  },
+  "prettier": {}
 }

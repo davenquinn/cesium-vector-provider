@@ -5,6 +5,7 @@ import "cesiumSource/Widgets/widgets.css";
 const Cesium = require("cesiumSource/Cesium");
 // Import @types/cesium to use along with CesiumJS
 import { MapboxImageryProvider } from "cesium";
+import MVTImageryProvider from "../src"
 import TerrainProvider from "@macrostrat/cesium-martini";
 import { render } from "react-dom";
 import { useRef, useEffect } from "react";
@@ -31,6 +32,16 @@ const SatelliteLayer = (props) => {
 
   return h(ImageryLayer, { imageryProvider: satellite.current, ...props });
 };
+
+function BaseLayer({ enabled = true, style, ...rest }) {
+  const provider = useRef(new MVTImageryProvider({
+    style: "mapbox://styles/jczaplewski/ckxeiii3a1jv415o8rxvgqlpd", //
+    maximumZoom: 15,
+    tileSize: 512,
+  }));
+
+  return h(ImageryLayer, { imageryProvider: provider.current, ...rest });
+}
 
 //const terrainProvider2 = createWorldTerrain();
 
