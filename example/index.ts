@@ -2,7 +2,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import "./main.css";
 import "cesiumSource/Widgets/widgets.css";
-const Cesium: any = require("cesiumSource/Cesium");
+const Cesium = require("cesiumSource/Cesium");
 // Import @types/cesium to use along with CesiumJS
 import { MapboxImageryProvider } from "cesium";
 import TerrainProvider from "@macrostrat/cesium-martini";
@@ -50,7 +50,7 @@ function CesiumView() {
     Viewer,
     {
       full: true,
-      terrainProvider: terrainProvider,
+      terrainProvider,
       imageryProvider: false,
     },
     [h(SatelliteLayer), h(Inspector)]

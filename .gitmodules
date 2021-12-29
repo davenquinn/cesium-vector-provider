@@ -1,3 +1,6 @@
 [submodule "packages/maplibre-gl"]
 	path = packages/maplibre-gl
 	url = git://github.com/davenquinn/maplibre-gl-js.git
+[submodule "packages/cesium-martini"]
+	path = packages/cesium-martini
+	url = git://github.com/davenquinn/cesium-martini.git
