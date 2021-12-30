@@ -21,3 +21,7 @@ body {
 .cesium-panel {
   position: relative;
 }
+
+.cesium-widget canvas {
+  cursor: hand;
+}

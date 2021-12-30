@@ -44,12 +44,14 @@ function Inspector() {
   return null;
 }
 
-function CesiumView({ style, accessToken }) {
+function CesiumView({ style, accessToken, ...rest }) {
+  console.log(rest);
   return h(
     CesiumViewer,
     {
       terrainProvider,
       displayQuality: DisplayQuality.High,
+      ...rest,
     },
     [h(BaseLayer, { style, accessToken }), h(Inspector)]
   );
