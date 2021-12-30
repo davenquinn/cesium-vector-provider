@@ -100,6 +100,7 @@ class MapboxVectorProvider extends BaseVectorProvider {
     if (this.accessToken != null) {
       url += "?access_token=" + this.accessToken;
     }
+    console.log(url);
 
     return { url };
   }

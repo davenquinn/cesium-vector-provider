@@ -22,6 +22,8 @@ class VectorProvider {
     this.showCanvas = options.showCanvas ?? false;
     this.accessToken = options.accessToken;
 
+    console.log(maplibre);
+
     this.mapboxRenderer = new BasicRenderer({
       style: options.style,
       transformRequest: (url, type) => this.transformRequest(url, type),

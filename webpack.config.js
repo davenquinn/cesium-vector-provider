@@ -20,6 +20,7 @@ module.exports = {
       cesium,
       cesiumSource,
       "@macrostrat/cesium-hillshade": packageSrc("cesium-hillshade"),
+      "maplibre-gl": path.resolve(__dirname, "packages", "maplibre-gl"),
     },
     fallback: { path: false },
   },
@@ -29,7 +30,7 @@ module.exports = {
       {
         test: /\.(js|jsx|ts|tsx)$/,
         use: ["babel-loader"],
-        exclude: [/node_modules/],
+        exclude: [/node_modules/, /packages\/maplibre-gl\/dist/],
       },
       {
         test: /\.(png|svg)$/,
