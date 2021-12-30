@@ -21,6 +21,7 @@
   "dependencies": {
     "@macrostrat/cesium-martini": "^1.2.3",
     "@macrostrat/cesium-viewer": "*",
+    "@macrostrat/map-panel": "*",
     "cesium": "^1.81.0",
     "maplibre-gl": "*"
   },

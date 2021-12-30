@@ -19,9 +19,12 @@ module.exports = {
     alias: {
       cesium,
       cesiumSource,
+      "@macrostrat/map-panel": packageSrc("map-panel"),
       "@macrostrat/cesium-viewer": packageSrc("cesium-viewer"),
       "@macrostrat/cesium-hillshade": packageSrc("cesium-hillshade"),
       "maplibre-gl": path.resolve(__dirname, "packages", "maplibre-gl"),
+      react: path.resolve(__dirname, "node_modules", "react"),
+      "react-dom": path.resolve(__dirname, "node_modules", "react-dom"),
     },
     fallback: { path: false },
   },

@@ -3,7 +3,6 @@ const Cesium = require("cesiumSource/Cesium");
 import { MapboxImageryProvider } from "cesium";
 import MVTImageryProvider from "../src";
 import TerrainProvider from "@macrostrat/cesium-martini";
-import { render } from "react-dom";
 import { useRef, useEffect } from "react";
 import h from "@macrostrat/hyper";
 import { ImageryLayer, useCesium } from "resium";
@@ -18,22 +17,11 @@ const terrainProvider = new TerrainProvider({
   credit: "Mapbox",
 });
 
-const SatelliteLayer = (props) => {
-  let satellite = useRef(
-    new MapboxImageryProvider({
-      mapId: "mapbox.satellite",
-      maximumLevel: 19,
-      accessToken: process.env.MAPBOX_API_TOKEN,
-    })
-  );
-
-  return h(ImageryLayer, { imageryProvider: satellite.current, ...props });
-};
-
-function BaseLayer({ enabled = true, style, ...rest }) {
+function BaseLayer({ enabled = true, style, accessToken, ...rest }) {
+  console.log(style);
   const provider = useRef(
     new MVTImageryProvider({
-      style: "mapbox://styles/jczaplewski/cjftzyqhh8o5l2rqu4k68soub", //
+      style,
       maximumZoom: 15,
       tileSize: 512,
       accessToken: process.env.MAPBOX_API_TOKEN,
@@ -56,15 +44,14 @@ function Inspector() {
   return null;
 }
 
-function CesiumView() {
+function CesiumView({ style, accessToken }) {
   return h(
     CesiumViewer,
     {
       terrainProvider,
-      imageryProvider: false,
       displayQuality: DisplayQuality.High,
     },
-    [h(BaseLayer), h(Inspector)]
+    [h(BaseLayer, { style, accessToken }), h(Inspector)]
   );
 }
 
