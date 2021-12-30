@@ -19,6 +19,7 @@ module.exports = {
     alias: {
       cesium,
       cesiumSource,
+      "@macrostrat/cesium-viewer": packageSrc("cesium-viewer"),
       "@macrostrat/cesium-hillshade": packageSrc("cesium-hillshade"),
       "maplibre-gl": path.resolve(__dirname, "packages", "maplibre-gl"),
     },

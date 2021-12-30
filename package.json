@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "@macrostrat/cesium-martini": "^1.2.3",
+    "@macrostrat/cesium-viewer": "*",
     "cesium": "^1.81.0",
     "maplibre-gl": "*"
   },
