@@ -1,6 +1,10 @@
 import BaseVectorProvider from "./base";
-import maplibre, { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
-import { HillshadeImageryProvider } from "@macrostrat/cesium-viewer/layers";
+import maplibre from "maplibre-gl/dist/maplibre-gl-dev";
+const { BasicRenderer } = maplibre;
+// import maplibre, {
+//   BasicRenderer,
+// } from "../packages/maplibre-gl/dist/maplibre-gl-dev";
+import HillshadeImageryProvider from "@macrostrat/cesium-hillshade";
 import * as Cesium from "cesium";
 
 async function canvasToImage(canvas: HTMLCanvasElement) {
@@ -40,6 +44,7 @@ class MapboxVectorProvider extends BaseVectorProvider {
    *
    */
   showCanvas: boolean;
+  accessToken: string;
 
   hillshadeRenderer: HillshadeImageryProvider;
 
@@ -48,7 +53,7 @@ class MapboxVectorProvider extends BaseVectorProvider {
     this.hillshadeRenderer = new HillshadeImageryProvider({
       mapId: "mapbox.terrain-rgb",
       maximumLevel: options.maximumLevel,
-      accessToken: maplibre.accessToken,
+      accessToken: options.accessToken,
       highResolution: true,
       format: "@2x.png",
     });
@@ -92,7 +97,11 @@ class MapboxVectorProvider extends BaseVectorProvider {
       url = url.replace("mapbox://", prefix);
     }
 
-    url += "?access_token=" + maplibre.accessToken;
+    if (this.accessToken != null) {
+      url += "?access_token=" + this.accessToken;
+    }
+    console.log(url);
+
     return { url };
   }
 

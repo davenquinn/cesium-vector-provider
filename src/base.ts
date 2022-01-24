@@ -1,4 +1,4 @@
-import { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
+import maplibre, { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
 import * as Cesium from "cesium";
 
 class VectorProvider {
@@ -16,9 +16,11 @@ class VectorProvider {
    *
    */
   showCanvas: boolean;
+  accessToken?: string;
 
   constructor(options) {
     this.showCanvas = options.showCanvas ?? false;
+    this.accessToken = options.accessToken;
 
     this.mapboxRenderer = new BasicRenderer({
       style: options.style,
@@ -60,8 +62,8 @@ class VectorProvider {
 
   createTile() {
     let canv = document.createElement("canvas");
-    canv.width = this.tileSize;
-    canv.height = this.tileSize;
+    canv.width = this.tileSize * 2;
+    canv.height = this.tileSize * 2;
     canv.style.imageRendering = "pixelated";
     canv.getContext("2d").globalCompositeOperation = "copy";
     return canv;
@@ -99,8 +101,8 @@ class VectorProvider {
         {
           srcLeft: 0,
           srcTop: 0,
-          width: this.tileSize,
-          height: this.tileSize,
+          width: this.tileSize * 2,
+          height: this.tileSize * 2,
           destLeft: 0,
           destTop: 0,
         },

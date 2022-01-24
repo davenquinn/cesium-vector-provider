@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+git submodule update --init --recursive
+npm install
+npm --prefix packages/cesium-martini run build
+npm --prefix packages/maplibre-gl run build-glsl
+npm --prefix packages/maplibre-gl run build-dev

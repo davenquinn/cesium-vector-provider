@@ -1,0 +1,16 @@
+{
+  "name": "@macrostrat/map-panel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@macrostrat/hyper": "^2.0.1",
+    "mapbox-gl": "^2.6.1",
+    "react": "^16.14.0"
+  }
+}
