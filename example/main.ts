@@ -1,6 +1,5 @@
 const Cesium = require("cesiumSource/Cesium");
 // Import @types/cesium to use along with CesiumJS
-import { MapboxImageryProvider } from "cesium";
 import MVTImageryProvider from "../src";
 import TerrainProvider from "@macrostrat/cesium-martini";
 import { useRef, useEffect } from "react";
@@ -22,6 +21,7 @@ function BaseLayer({ enabled = true, style, accessToken, ...rest }) {
   const provider = useRef(
     new MVTImageryProvider({
       style,
+      showCanvas: false,
       maximumZoom: 15,
       tileSize: 512,
       accessToken: process.env.MAPBOX_API_TOKEN,
@@ -51,9 +51,10 @@ function CesiumView({ style, accessToken, ...rest }) {
     {
       terrainProvider,
       displayQuality: DisplayQuality.High,
+      showInspector: true,
       ...rest,
     },
-    [h(BaseLayer, { style, accessToken }), h(Inspector)]
+    [h(BaseLayer, { style, accessToken })]
   );
 }
 
