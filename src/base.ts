@@ -24,6 +24,7 @@ class VectorProvider {
 
     this.mapboxRenderer = new BasicRenderer({
       style: options.style,
+      filterHillshadeLayers: false,
       transformRequest: (url, type) => this.transformRequest(url, type),
     });
 
@@ -62,8 +63,8 @@ class VectorProvider {
 
   createTile() {
     let canv = document.createElement("canvas");
-    canv.width = this.tileSize * 2;
-    canv.height = this.tileSize * 2;
+    canv.width = this.tileSize;
+    canv.height = this.tileSize;
     canv.style.imageRendering = "pixelated";
     canv.getContext("2d").globalCompositeOperation = "copy";
     return canv;

@@ -115,7 +115,7 @@ class MapboxVectorProvider extends BaseVectorProvider {
       .requestImage(x, y, zoom, request)
       ?.then(canvasToImage);
 
-    //return mainPromise;
+    return mainPromise;
 
     //const maskPromise = coloredCanvas("#ffffff");
 
