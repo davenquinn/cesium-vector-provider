@@ -8,6 +8,7 @@ import {
   flyToParams,
   ViewInfo,
 } from "@macrostrat/cesium-viewer/position";
+import { DisplayQuality } from "@macrostrat/cesium-viewer";
 
 function translateCameraPosition(pos: MapPosition): CameraParams {
   const { bearing = 0, pitch, altitude } = pos.camera;
@@ -52,6 +53,7 @@ function App() {
         style,
         accessToken,
         flyTo,
+        displayQuality: DisplayQuality.High,
         onViewChange(cpos: ViewInfo) {
           const { camera } = cpos;
           setPosition({
@@ -71,6 +73,7 @@ function App() {
       accessToken,
       position,
       onChangePosition: setPosition,
+      showTileBoundaries: true,
     }),
   ]);
 }

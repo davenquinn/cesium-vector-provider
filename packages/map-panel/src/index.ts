@@ -43,6 +43,7 @@ interface MapComponentProps {
   position?: MapPosition;
   onChangePosition?: (pos: MapPosition) => void;
   accessToken?: string;
+  showTileBoundaries?: boolean;
 }
 
 function MapComponent({
@@ -50,6 +51,7 @@ function MapComponent({
   accessToken,
   position = defaultPosition,
   onChangePosition,
+  showTileBoundaries = false,
 }: MapComponentProps) {
   const ref = useRef<HTMLElement>();
   const mapRef = useRef<Map>();
@@ -67,6 +69,12 @@ function MapComponent({
     });
     return () => mapRef.current.remove();
   }, [ref, accessToken, style]);
+
+  useEffect(() => {
+    if (mapRef.current == null) return;
+    mapRef.current.showTileBoundaries = true;
+    mapRef.current.triggerRepaint();
+  }, [mapRef.current, showTileBoundaries]);
 
   useEffect(() => {
     if (mapRef.current == null) return;
