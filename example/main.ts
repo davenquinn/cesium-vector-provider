@@ -12,8 +12,7 @@ const terrainProvider = new TerrainProvider({
   hasVertexNormals: false,
   hasWaterMask: false,
   accessToken: process.env.MAPBOX_API_TOKEN,
-  highResolution: true,
-  detailScalar: 4,
+  highResolution: false,
   credit: "Mapbox",
 });
 
@@ -51,7 +50,7 @@ function CesiumView({ style, accessToken, ...rest }) {
     CesiumViewer,
     {
       terrainProvider,
-      displayQuality: DisplayQuality.High,
+      displayQuality: DisplayQuality.Ultra,
       showInspector: true,
       ...rest,
     },

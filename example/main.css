@@ -2,15 +2,47 @@
   transform: translate(0, 70px);
 }
 
-.map-container {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
 }
 
-.map-container > * {
+* {
+  box-sizing: border-box;
+}
+
+.example-app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 1em;
+}
+
+.map-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  margin: -4px;
+}
+
+.map-panel {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 4px;
+}
+
+.map-sizer {
+  flex-grow: 1;
+  position: relative;
+}
+
+.mapboxgl-map {
+  width: 100%;
+  height: 100%;
 }
 
 body {
@@ -24,4 +56,36 @@ body {
 
 .cesium-widget canvas {
   cursor: hand;
+}
+
+div.caption {
+  font-size: 0.8em;
+  font-style: italic;
+  color: #888;
+  text-align: left;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0em 2em;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+header > * {
+  margin-right: 1em;
+}
+
+header p {
+  margin: 0.2em 0 0.3em;
+  font-style: italic;
+}
+
+.spacer {
+  flex-grow: 1;
 }
