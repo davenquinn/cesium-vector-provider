@@ -1,4 +1,4 @@
-import maplibre, { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
+import { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
 import * as Cesium from "cesium";
 
 class VectorProvider {

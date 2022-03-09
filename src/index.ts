@@ -1,13 +1,9 @@
 import BaseVectorProvider from "./base";
-import maplibre from "maplibre-gl/dist/maplibre-gl-dev";
-const { BasicRenderer } = maplibre;
-// import maplibre, {
-//   BasicRenderer,
-// } from "../packages/maplibre-gl/dist/maplibre-gl-dev";
-import HillshadeImageryProvider from "@macrostrat/cesium-hillshade";
 import * as Cesium from "cesium";
 
-async function canvasToImage(canvas: HTMLCanvasElement) {
+async function canvasToImage(
+  canvas: HTMLCanvasElement
+): Promise<HTMLImageElement> {
   const img = new Image();
   return new Promise((resolve) => {
     img.onload = function () {
@@ -46,17 +42,8 @@ class MapboxVectorProvider extends BaseVectorProvider {
   showCanvas: boolean;
   accessToken: string;
 
-  hillshadeRenderer: HillshadeImageryProvider;
-
   constructor(options) {
     super(options);
-    this.hillshadeRenderer = new HillshadeImageryProvider({
-      mapId: "mapbox.terrain-rgb",
-      maximumLevel: options.maximumLevel,
-      accessToken: options.accessToken,
-      highResolution: true,
-      format: "@2x.png",
-    });
     this.tilingScheme = new Cesium.WebMercatorTilingScheme();
     this.rectangle = this.tilingScheme.rectangle;
     this.tileSize = this.tileWidth = this.tileHeight = options.tileSize || 512;
@@ -111,34 +98,7 @@ class MapboxVectorProvider extends BaseVectorProvider {
     zoom: any,
     request: any
   ): Promise<HTMLCanvasElement | HTMLImageElement> | undefined {
-    const mainPromise = super
-      .requestImage(x, y, zoom, request)
-      ?.then(canvasToImage);
-
-    return mainPromise;
-
-    //const maskPromise = coloredCanvas("#ffffff");
-
-    //   .then((img: HTMLCanvasElement | undefined) => {
-    //     if (img === undefined) return;
-    //     return createImageBitmap(img);
-    //   });
-    // if (mainPromise == null) return undefined;
-    const hillshadePromise = this.hillshadeRenderer.requestBaseImage(
-      x,
-      y,
-      zoom,
-      request
-    );
-
-    if (mainPromise == null || hillshadePromise == null) return undefined;
-
-    // return mainPromise;
-    return this.hillshadeRenderer.maskImage(hillshadePromise, mainPromise, {
-      x,
-      y,
-      z: zoom,
-    });
+    return super.requestImage(x, y, zoom, request)?.then(canvasToImage);
   }
 }
 
