@@ -7,7 +7,7 @@ import {
   nadirCameraParams,
   flyToParams,
   ViewInfo,
-} from "@macrostrat/cesium-viewer/position";
+} from "@macrostrat/cesium-viewer";
 import { DisplayQuality } from "@macrostrat/cesium-viewer";
 
 function translateCameraPosition(pos: MapPosition): CameraParams {

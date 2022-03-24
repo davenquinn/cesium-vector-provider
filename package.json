@@ -13,7 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack serve",
     "dev": "npm --prefix packages/maplibre-gl run watch-dev & npm run watch",
-    "postinstall": "npm --prefix packages/maplibre-gl install",
+    "postinstall": "npm --prefix packages/maplibre-gl --no-package-lock install",
     "bootstrap": "scripts/setup"
   },
   "author": "",
