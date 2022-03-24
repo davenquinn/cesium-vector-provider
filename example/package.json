@@ -1,5 +1,5 @@
 {
-  "name": "cesium-vector-provider",
+  "name": "cesium-vector-provider-example",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
@@ -20,12 +20,9 @@
   "license": "ISC",
   "dependencies": {
     "@macrostrat/cesium-martini": "^1.2.3",
-    "cesium": "^1.81.0",
-    "maplibre-gl": "*"
+    "@macrostrat/cesium-viewer": "^1.0.0",
+    "cesium": "^1.81.0"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "devDependencies": {
     "@macrostrat/hyper": "^2.0.1",
     "@open-wc/webpack-import-meta-loader": "^0.4.7",

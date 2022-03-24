@@ -1,6 +1,6 @@
 const Cesium = require("cesiumSource/Cesium");
 // Import @types/cesium to use along with CesiumJS
-import MVTImageryProvider from "../src";
+import MVTImageryProvider from "../../src";
 import TerrainProvider from "@macrostrat/cesium-martini";
 import { useRef, useEffect } from "react";
 import h from "@macrostrat/hyper";
