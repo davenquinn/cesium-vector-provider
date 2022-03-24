@@ -18,13 +18,15 @@
     cesium "^1.81.0"
     get-pixels "^3.3.2"
 
-"@macrostrat/cesium-viewer@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@macrostrat/cesium-viewer/-/cesium-viewer-1.0.0.tgz#514ac956d85ec807e26efb83f078fa198eff521c"
-  integrity sha512-MvP3oxX+OH5G9xUr0G2o7mM4/0t6QnCc19vijxgXx6boBHMITbANlDURuCPJ5xBuGhC5zVhjzZ+tY6uvzeas6g==
+"@macrostrat/cesium-viewer@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@macrostrat/cesium-viewer/-/cesium-viewer-1.0.1.tgz#a63da691d3f09717c641c969cc780c61981bcec1"
+  integrity sha512-/YkU5v2f3eHN9f/C7rOTVWhWX9YjQjFOtwxXweL/f5WemrxZMCWlBP+7n/HbMszV6cQyASXnxGHDKQGeZa3QLw==
   dependencies:
+    "@macrostrat/hyper" "^2.0.1"
     "@znemz/cesium-navigation" "^4.0.0"
     cesium "^1.81.0"
+    d3-format "^3.1.0"
     resium "^1.13.1"
 
 "@macrostrat/hyper@^2.0.1":
@@ -920,6 +922,11 @@ cwise-compiler@^1.1.2:
   integrity sha1-9NZnQQ6FDToxOn0tt7HlBbsDTMU=
   dependencies:
     uniq "^1.0.0"
+
+d3-format@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-3.1.0.tgz#9260e23a28ea5cb109e93b21a06e24e2ebd55641"
+  integrity sha512-YyUI6AEuY/Wpt8KWLgZHsIU86atmikuoOmCfommt0LYHiQSPjvX2AcFc38PX0CBpr2RCyZhjex+NS/LPOv6YqA==
 
 dashdash@^1.12.0:
   version "1.14.1"

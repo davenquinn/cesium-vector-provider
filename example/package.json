@@ -12,15 +12,15 @@
     "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('Use yarn for installing: https://yarnpkg.com/en/docs/install')\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack serve",
-    "dev": "npm --prefix packages/maplibre-gl run watch-dev & npm run watch",
-    "postinstall": "npm --prefix packages/maplibre-gl install",
+    "dev": "npm --prefix ../packages/maplibre-gl run watch-dev & npm run watch",
+    "postinstall": "npm --prefix ../packages/maplibre-gl install",
     "bootstrap": "scripts/setup"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@macrostrat/cesium-martini": "^1.2.3",
-    "@macrostrat/cesium-viewer": "^1.0.0",
+    "@macrostrat/cesium-viewer": "^1.0.1",
     "cesium": "^1.81.0"
   },
   "devDependencies": {

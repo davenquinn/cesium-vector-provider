@@ -4,6 +4,3 @@
 [submodule "packages/cesium-martini"]
 	path = example/deps/cesium-martini
 	url = https://github.com/davenquinn/cesium-martini.git
-[submodule "packages/cesium-viewer"]
-	path = example/deps/cesium-viewer
-	url = https://github.com/UW-Macrostrat/cesium-viewer.git
