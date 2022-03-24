@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@macrostrat/cesium-martini": "^1.2.3",
     "cesium": "^1.81.0",
     "maplibre-gl": "*"
   },

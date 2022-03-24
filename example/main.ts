@@ -5,15 +5,18 @@ import TerrainProvider from "@macrostrat/cesium-martini";
 import { useRef, useEffect } from "react";
 import h from "@macrostrat/hyper";
 import { ImageryLayer, useCesium } from "resium";
-import CesiumViewer, { DisplayQuality } from "@macrostrat/cesium-viewer";
+import CesiumViewer, {
+  DisplayQuality,
+  MapboxLogo,
+} from "@macrostrat/cesium-viewer";
+import "@macrostrat/cesium-viewer/dist/index.css";
 
 const terrainProvider = new TerrainProvider({
   // @ts-ignore
   hasVertexNormals: false,
   hasWaterMask: false,
   accessToken: process.env.MAPBOX_API_TOKEN,
-  highResolution: true,
-  detailScalar: 4,
+  highResolution: false,
   credit: "Mapbox",
 });
 
@@ -51,11 +54,12 @@ function CesiumView({ style, accessToken, ...rest }) {
     CesiumViewer,
     {
       terrainProvider,
-      displayQuality: DisplayQuality.High,
+      displayQuality: DisplayQuality.Ultra,
       showInspector: true,
+      showIonLogo: false,
       ...rest,
     },
-    [h(BaseLayer, { style, accessToken })]
+    [h(BaseLayer, { style, accessToken }), h(MapboxLogo)]
   );
 }
 

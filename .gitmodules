@@ -1,9 +1,9 @@
 [submodule "packages/maplibre-gl"]
 	path = packages/maplibre-gl
-	url = git://github.com/davenquinn/maplibre-gl-js.git
+	url = https://github.com/davenquinn/maplibre-gl-js.git
 [submodule "packages/cesium-martini"]
 	path = example/deps/cesium-martini
-	url = git://github.com/davenquinn/cesium-martini.git
+	url = https://github.com/davenquinn/cesium-martini.git
 [submodule "packages/cesium-viewer"]
 	path = example/deps/cesium-viewer
-	url = git://github.com/UW-Macrostrat/cesium-viewer.git
+	url = https://github.com/UW-Macrostrat/cesium-viewer.git

@@ -101,8 +101,8 @@ class VectorProvider {
         {
           srcLeft: 0,
           srcTop: 0,
-          width: this.tileSize * 2,
-          height: this.tileSize * 2,
+          width: this.tileSize,
+          height: this.tileSize,
           destLeft: 0,
           destTop: 0,
         },

@@ -1,6 +1,6 @@
 import mapboxgl, { Map } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import h from "@macrostrat/hyper";
 import { MapPosition } from "./types";
 import { enable3DTerrain } from "./helpers";
@@ -38,12 +38,44 @@ async function initializeMap(
   return map;
 }
 
+interface DebugOptions {
+  showTileBoundaries?: boolean;
+  showTerrainWireframe?: boolean;
+  showCollisionBoxes?: boolean;
+}
+
 interface MapComponentProps {
   style: any;
   position?: MapPosition;
   onChangePosition?: (pos: MapPosition) => void;
   accessToken?: string;
-  showTileBoundaries?: boolean;
+  debug?: DebugOptions;
+}
+
+function MapDebugger({
+  mapRef,
+  ...rest
+}: DebugOptions & { mapRef: React.RefObject<Map> }) {
+  const {
+    showTileBoundaries = false,
+    showTerrainWireframe = false,
+    showCollisionBoxes = false,
+  } = rest;
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (map == null) return;
+    map.showTileBoundaries = showTileBoundaries;
+    map.showTerrainWireframe = showTerrainWireframe;
+    map.showCollisionBoxes = showCollisionBoxes;
+    map.triggerRepaint();
+  }, [
+    mapRef.current,
+    showTileBoundaries,
+    showTerrainWireframe,
+    showCollisionBoxes,
+  ]);
+  return null;
 }
 
 function MapComponent({
@@ -51,10 +83,16 @@ function MapComponent({
   accessToken,
   position = defaultPosition,
   onChangePosition,
-  showTileBoundaries = false,
+  debug = {},
 }: MapComponentProps) {
   const ref = useRef<HTMLElement>();
   const mapRef = useRef<Map>();
+
+  const {
+    showTileBoundaries = false,
+    showTerrainWireframe = false,
+    showCollisionBoxes = false,
+  } = debug;
 
   useEffect(() => {
     mapboxgl.accessToken = accessToken;
@@ -72,16 +110,10 @@ function MapComponent({
 
   useEffect(() => {
     if (mapRef.current == null) return;
-    mapRef.current.showTileBoundaries = true;
-    mapRef.current.triggerRepaint();
-  }, [mapRef.current, showTileBoundaries]);
-
-  useEffect(() => {
-    if (mapRef.current == null) return;
     setMapPosition(mapRef.current, position);
   }, [mapRef.current, position]);
 
-  return h("div.map", { ref });
+  return h("div.map", { ref }, [h(MapDebugger, { mapRef, ...debug })]);
 }
 
 export default MapComponent;

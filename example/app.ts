@@ -7,7 +7,7 @@ import {
   nadirCameraParams,
   flyToParams,
   ViewInfo,
-} from "@macrostrat/cesium-viewer/position";
+} from "@macrostrat/cesium-viewer";
 import { DisplayQuality } from "@macrostrat/cesium-viewer";
 
 function translateCameraPosition(pos: MapPosition): CameraParams {
@@ -28,9 +28,27 @@ function translateCameraPosition(pos: MapPosition): CameraParams {
   }
 }
 
+function VisControl({ show, setShown, name }) {
+  return h(
+    "li",
+    h(
+      "a",
+      {
+        onClick() {
+          setShown(!show);
+        },
+      },
+      [show ? "Hide" : "Show", " ", name]
+    )
+  );
+}
+
 function App() {
   const style = "mapbox://styles/jczaplewski/cjftzyqhh8o5l2rqu4k68soub";
   const accessToken = process.env.MAPBOX_API_TOKEN;
+  const [showWireframe, setShowWireframe] = useState(false);
+  const [showInspector, setShowInspector] = useState(false);
+  const [showMapbox, setShowMapbox] = useState(false);
   const [position, setPosition] = useState<MapPosition>({
     camera: {
       lng: 16.1987,
@@ -47,34 +65,104 @@ function App() {
     [position]
   );
 
-  return h("div.map-container", [
-    h("div.cesium-panel", [
-      h(CesiumView, {
-        style,
-        accessToken,
-        flyTo,
-        displayQuality: DisplayQuality.High,
-        onViewChange(cpos: ViewInfo) {
-          const { camera } = cpos;
-          setPosition({
-            camera: {
-              lng: camera.longitude,
-              lat: camera.latitude,
-              altitude: camera.height,
-              pitch: 90 + (camera.pitch ?? -90),
-              bearing: camera.heading,
+  return h("div.example-app", [
+    h("header", [
+      h("div.basics", [
+        h("div.title", [h("h1", "Cesium vector provider")]),
+        h("p.author", [
+          "by ",
+          h("a", { href: "https://davenquinn.com" }, "Daven Quinn"),
+          ", 2021–2022",
+        ]),
+      ]),
+      h("div.about", [
+        h("p.github", [
+          "GitHub: ",
+          h(
+            "a",
+            {
+              href: "https://github.com/davenquinn/cesium-vector-provider",
             },
-          });
-        },
-      }),
+            "Cesium Vector Provider"
+          ),
+          " • ",
+          h(
+            "a",
+            {
+              href: "https://github.com/davenquinn/cesium-martini",
+            },
+            "Cesium Martini (terrain)"
+          ),
+        ]),
+        h(
+          "p.description",
+          "Mapbox GL vector maps atop the Cesium JS digital globe"
+        ),
+      ]),
+      h("div.spacer"),
+      h("ul.controls", [
+        h(VisControl, {
+          name: "Mapbox GL reference map",
+          show: showMapbox,
+          setShown: setShowMapbox,
+        }),
+        h(VisControl, {
+          name: "Cesium inspector",
+          show: showInspector,
+          setShown: setShowInspector,
+        }),
+        h(VisControl, {
+          name: "wireframe",
+          show: showWireframe,
+          setShown: setShowWireframe,
+        }),
+      ]),
     ]),
-    h(Map, {
-      style,
-      accessToken,
-      position,
-      onChangePosition: setPosition,
-      showTileBoundaries: true,
-    }),
+    h("div.map-container", [
+      h("div.map-panel.cesium", [
+        h("div.cesium-container.map-sizer", [
+          h(CesiumView, {
+            style,
+            accessToken,
+            flyTo,
+            showWireframe,
+            showInspector,
+            onViewChange(cpos: ViewInfo) {
+              const { camera } = cpos;
+              setPosition({
+                camera: {
+                  lng: camera.longitude,
+                  lat: camera.latitude,
+                  altitude: camera.height,
+                  pitch: 90 + (camera.pitch ?? -90),
+                  bearing: camera.heading,
+                },
+              });
+            },
+          }),
+        ]),
+        h(
+          "div.caption",
+          "Cesium JS rendering Mapbox data using Cesium Vector Provider (backed by Maplibre GL) atop Cesium Martini"
+        ),
+      ]),
+      h.if(showMapbox)("div.map-panel", [
+        h("div.mapbox-gl-container.map-sizer", [
+          h(Map, {
+            style,
+            accessToken,
+            position,
+            onChangePosition: setPosition,
+            debug: {
+              showTileBoundaries: showInspector,
+              showCollisionBoxes: showInspector,
+              showTerrainWireframe: showWireframe,
+            },
+          }),
+        ]),
+        h("div.caption", "Mapbox GL JS v2"),
+      ]),
+    ]),
   ]);
 }
 
