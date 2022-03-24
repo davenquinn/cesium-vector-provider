@@ -1,8 +1,0 @@
-{
-  "extends": "../tsconfig.base.json",
-  "compilerOptions": {
-    "paths": {
-      "@macrostrat/map-panel": ["./deps/map-panel/src/**/*"]
-    }
-  }
-}
