@@ -18,10 +18,10 @@
     cesium "^1.81.0"
     get-pixels "^3.3.2"
 
-"@macrostrat/cesium-viewer@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@macrostrat/cesium-viewer/-/cesium-viewer-1.0.1.tgz#a63da691d3f09717c641c969cc780c61981bcec1"
-  integrity sha512-/YkU5v2f3eHN9f/C7rOTVWhWX9YjQjFOtwxXweL/f5WemrxZMCWlBP+7n/HbMszV6cQyASXnxGHDKQGeZa3QLw==
+"@macrostrat/cesium-viewer@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@macrostrat/cesium-viewer/-/cesium-viewer-1.0.2.tgz#e5ec8d7efe151216b51c85c4b38747c4be820173"
+  integrity sha512-XEQONBq5qb15jx10uXWFxn7eqiigAkcESTZqiK5zPN5iKpjKI6YEIulQwo3w6HqBcbL7K6ojj2fy7eihFlwBMw==
   dependencies:
     "@macrostrat/hyper" "^2.0.1"
     "@znemz/cesium-navigation" "^4.0.0"
