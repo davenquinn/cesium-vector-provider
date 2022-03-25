@@ -8,7 +8,6 @@ import {
   flyToParams,
   ViewInfo,
 } from "@macrostrat/cesium-viewer";
-import { DisplayQuality } from "@macrostrat/cesium-viewer";
 
 function translateCameraPosition(pos: MapPosition): CameraParams {
   const { bearing = 0, pitch, altitude } = pos.camera;
@@ -29,11 +28,13 @@ function translateCameraPosition(pos: MapPosition): CameraParams {
 }
 
 function VisControl({ show, setShown, name }) {
+  const className = show ? "active" : "";
   return h(
     "li",
     h(
       "a",
       {
+        className,
         onClick() {
           setShown(!show);
         },

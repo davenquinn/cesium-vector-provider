@@ -35,21 +35,7 @@ function BaseLayer({ enabled = true, style, accessToken, ...rest }) {
   return h(ImageryLayer, { imageryProvider: provider.current, ...rest });
 }
 
-//const terrainProvider2 = createWorldTerrain();
-
-function Inspector() {
-  const { viewer } = useCesium();
-  useEffect(() => {
-    if (viewer == null) return;
-    viewer.extend(Cesium.viewerCesiumInspectorMixin, {});
-    viewer.scene.requestRenderMode = true;
-    viewer.scene.debugShowFramesPerSecond = true;
-  }, [viewer]);
-  return null;
-}
-
 function CesiumView({ style, accessToken, ...rest }) {
-  console.log(rest);
   return h(
     CesiumViewer,
     {

@@ -89,3 +89,32 @@ header p {
 .spacer {
   flex-grow: 1;
 }
+
+ul.controls {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.controls li a {
+  display: block;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  text-decoration: none;
+  background-color: #eee;
+}
+
+.controls li a.active {
+  background-color: #a3d0fd;
+}
+
+/* These styles make up for deficiencies in cesium-viewer */
+.mapbox-logo {
+  display: block !important;
+  margin-left: 8px;
+}
+
+.cesium-cesiumInspector {
+  transform: unset !important;
+}
