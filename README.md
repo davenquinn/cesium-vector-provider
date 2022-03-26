@@ -11,7 +11,7 @@ codebase.
 
 ## Quick links
 
-- [Demo website](https://davenquinn.com/viz/cesium-vector-provider)
+- [Demo website](https://davenquinn.com/viz/cesium-vector-provider) for this module
 - [Cesium-Martini](https://github.com/davenquinn/cesium-martini) (dynamic terrain meshing from raster DEMs)
 - [Macrostrat globe prototype](https://dev.macrostrat.org/next/web/globe)
 - [Mars lab](https://argyre.geoscience.wisc.edu/app) planetary GIS application
