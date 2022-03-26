@@ -20,10 +20,9 @@ codebase.
 
 ## Motivation and prior art
 
-This module represents an opportunity for the excellent Cesium 3D geospatial
+This module allows excellent Cesium 3D geospatial
 platform to consume vector maps following the flexible Mapbox style
-specification. Vector tiles are a popular request for support within Cesium JS 
-(see [tracking issue](https://github.com/CesiumGS/cesium/issues/2132)). Compared to the Mapbox
+specification. Compared to the Mapbox
 stack alone, integration with Cesium allows use with a mature digital globe that
 supports high fidelity 3D rendering. It also allows integration of thematic
 vector maps with Cesium capabilities such as 3D tiles and point clouds.
@@ -43,13 +42,14 @@ Mapbox has not been interested in integrating
 interoperability-geared capabilities into the core library, presumably for
 commercial reasons (see [the original request](https://github.com/mapbox/mapbox-gl-js/issues/4420)), and the version of Mapbox GL used in these libraries has subsequently become out of date.
 
+Vector tile support within Cesium JS has been widely discussed for quite some time (see [tracking issue](https://github.com/CesiumGS/cesium/issues/2132)).
 Other efforts to solve this problem include a [standalone vector-tile Imagery Provider](https://github.com/robbo1975/MapboxVectorTileImageryProvider) created by `robbo1975`, and a similar vector tile renderer within the awesome [TerriaJS](https://terria.io) project (see discussion [here](https://github.com/CesiumGS/cesium/issues/6182#issuecomment-362723885)). Both of these efforts work well,
-but they use CPU-based rendering of only the basic aspects of the vector-tile spec, and implement a separate style spec from the Mapbox stack.
+but they use CPU-based rendering of only the basic aspects of the vector-tile spec, and implement a separate styling approach from the Mapbox stack.
+This project seeks to support vector tiles with as much "drop-in" support for Mapbox approaches as is practicable.
 
-With the advent of the community-led Maplibre project, the possibility of
-ongoing integration with a high-performance vector tile renderer, using
-standard Mapbox JSON styles, has significantly
-improved.  While this module still uses a [custom fork of Maplibre GL JS](https://github.com/davenquinn/maplibre-gl-js), it has
+The advent of the community-led Maplibre project has significantly improved the prospects for
+sustainable integration with a high-performance vector tile rendere.
+While this module still uses a [custom fork of Maplibre GL JS](https://github.com/davenquinn/maplibre-gl-js), it has
 been brought up to date with the modern `v2` series.
 Once we build a better sense of the minimal set of hooks we need to make this integration work,
 we will seek to merge these changes back to the Maplibre GL codebase
