@@ -1,4 +1,4 @@
-import maplibre, { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
+import { BasicRenderer } from "maplibre-gl/dist/maplibre-gl-dev";
 import * as Cesium from "cesium";
 
 class VectorProvider {
@@ -95,6 +95,7 @@ class VectorProvider {
 
     return new Promise((resolve, reject) => {
       let canv = this.createTile();
+      console.log(canv);
       const renderRef = this.mapboxRenderer.renderTiles(
         canv.getContext("2d"),
         {
@@ -107,7 +108,7 @@ class VectorProvider {
         },
         tilesSpec,
         (err) => {
-          if (!!err) {
+          if (err != null) {
             console.error(err);
             switch (err) {
               case "canceled":

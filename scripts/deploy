@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+export PUBLIC_PATH="/viz/cesium-vector-provider/"
+npm run build
+rclone sync example/dist/ davenquinn-spaces:davenquinn-sites/viz/cesium-vector-provider/

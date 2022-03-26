@@ -8,7 +8,9 @@ const cesium = path.dirname(require.resolve("cesium"));
 const cesiumSource = path.join(cesium, "Source");
 const cesiumWorkers = "../Build/CesiumUnminified/Workers";
 
-const packageSrc = (name) => path.resolve(__dirname, "packages", name, "src");
+const packageSrc = (name) => path.resolve(__dirname, "deps", name, "src");
+
+console.log(process.env.PUBLIC_PATH);
 
 module.exports = {
   mode: "development",
@@ -20,9 +22,7 @@ module.exports = {
       cesium,
       cesiumSource,
       "@macrostrat/map-panel": packageSrc("map-panel"),
-      //"@macrostrat/cesium-viewer": packageSrc("cesium-viewer"),
-      "@macrostrat/cesium-hillshade": packageSrc("cesium-hillshade"),
-      "maplibre-gl": path.resolve(__dirname, "packages", "maplibre-gl"),
+      "maplibre-gl": path.resolve(__dirname, "..", "packages", "maplibre-gl"),
       react: path.resolve(__dirname, "node_modules", "react"),
       "react-dom": path.resolve(__dirname, "node_modules", "react-dom"),
     },
@@ -34,7 +34,7 @@ module.exports = {
       {
         test: /\.(js|jsx|ts|tsx)$/,
         use: ["babel-loader"],
-        exclude: [/node_modules/, /packages\/maplibre-gl\/dist/],
+        exclude: [/node_modules/, /..\/packages\/maplibre-gl\/dist/],
       },
       {
         test: /\.(png|svg)$/,
@@ -56,11 +56,14 @@ module.exports = {
     ],
   },
   entry: {
-    index: "./example/index.ts",
+    index: "./src/index.ts",
   },
   amd: {
     // Enable webpack-friendly use of require in Cesium
     toUrlUndefined: true,
+  },
+  output: {
+    publicPath: "auto",
   },
   plugins: [
     new HtmlWebpackPlugin({ title: "Mapbox / Cesium Vector Provider" }),
@@ -74,7 +77,7 @@ module.exports = {
     new DotenvPlugin(),
     new DefinePlugin({
       // Define relative base path in cesium for loading assets
-      CESIUM_BASE_URL: JSON.stringify("/"),
+      CESIUM_BASE_URL: JSON.stringify(process.env.PUBLIC_PATH ?? "/"),
     }),
   ],
 };

@@ -13,10 +13,6 @@
     "declarationDir": "dist/types",
     "outDir": "dist/lib",
     "typeRoots": ["node_modules/@types"],
-    "paths": {
-      "@macrostrat/cesium-hillshade": ["./packages/cesium-hillshade/src/**/*"],
-      "@macrostrat/map-panel": ["./packages/map-panel/src/**/*"]
-    }
   },
   "include": ["src", "packages/*/src"]
 }

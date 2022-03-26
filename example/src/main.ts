@@ -1,6 +1,6 @@
 const Cesium = require("cesiumSource/Cesium");
 // Import @types/cesium to use along with CesiumJS
-import MVTImageryProvider from "../src";
+import MVTImageryProvider from "../../src";
 import TerrainProvider from "@macrostrat/cesium-martini";
 import { useRef, useEffect } from "react";
 import h from "@macrostrat/hyper";
@@ -35,21 +35,7 @@ function BaseLayer({ enabled = true, style, accessToken, ...rest }) {
   return h(ImageryLayer, { imageryProvider: provider.current, ...rest });
 }
 
-//const terrainProvider2 = createWorldTerrain();
-
-function Inspector() {
-  const { viewer } = useCesium();
-  useEffect(() => {
-    if (viewer == null) return;
-    viewer.extend(Cesium.viewerCesiumInspectorMixin, {});
-    viewer.scene.requestRenderMode = true;
-    viewer.scene.debugShowFramesPerSecond = true;
-  }, [viewer]);
-  return null;
-}
-
 function CesiumView({ style, accessToken, ...rest }) {
-  console.log(rest);
   return h(
     CesiumViewer,
     {

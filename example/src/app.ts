@@ -8,7 +8,6 @@ import {
   flyToParams,
   ViewInfo,
 } from "@macrostrat/cesium-viewer";
-import { DisplayQuality } from "@macrostrat/cesium-viewer";
 
 function translateCameraPosition(pos: MapPosition): CameraParams {
   const { bearing = 0, pitch, altitude } = pos.camera;
@@ -29,11 +28,13 @@ function translateCameraPosition(pos: MapPosition): CameraParams {
 }
 
 function VisControl({ show, setShown, name }) {
+  const className = show ? "active" : "";
   return h(
     "li",
     h(
       "a",
       {
+        className,
         onClick() {
           setShown(!show);
         },
@@ -44,7 +45,8 @@ function VisControl({ show, setShown, name }) {
 }
 
 function App() {
-  const style = "mapbox://styles/jczaplewski/cjftzyqhh8o5l2rqu4k68soub";
+  // next, figure out labels: mapbox://styles/jczaplewski/cl16w70qs000015qd8aw9sea5
+  const style = "mapbox://styles/jczaplewski/cklb8aopu2cnv18mpxwfn7c9n";
   const accessToken = process.env.MAPBOX_API_TOKEN;
   const [showWireframe, setShowWireframe] = useState(false);
   const [showInspector, setShowInspector] = useState(false);
