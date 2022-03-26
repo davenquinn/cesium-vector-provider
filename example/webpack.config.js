@@ -10,6 +10,8 @@ const cesiumWorkers = "../Build/CesiumUnminified/Workers";
 
 const packageSrc = (name) => path.resolve(__dirname, "deps", name, "src");
 
+console.log(process.env.PUBLIC_PATH);
+
 module.exports = {
   mode: "development",
   // Enable sourcemaps for debugging webpack's output.
@@ -60,6 +62,9 @@ module.exports = {
     // Enable webpack-friendly use of require in Cesium
     toUrlUndefined: true,
   },
+  output: {
+    publicPath: "auto",
+  },
   plugins: [
     new HtmlWebpackPlugin({ title: "Mapbox / Cesium Vector Provider" }),
     new CopyPlugin({
@@ -72,7 +77,7 @@ module.exports = {
     new DotenvPlugin(),
     new DefinePlugin({
       // Define relative base path in cesium for loading assets
-      CESIUM_BASE_URL: JSON.stringify("/"),
+      CESIUM_BASE_URL: JSON.stringify(process.env.PUBLIC_PATH ?? "/"),
     }),
   ],
 };

@@ -41,11 +41,13 @@ class MapboxVectorProvider extends BaseVectorProvider {
    */
   showCanvas: boolean;
   accessToken: string;
+  forceHTTPS: boolean = true;
 
   constructor(options) {
     super(options);
     this.tilingScheme = new Cesium.WebMercatorTilingScheme();
     this.rectangle = this.tilingScheme.rectangle;
+    this.forceHTTPS = options.https ?? true;
     this.tileSize = this.tileWidth = this.tileHeight = options.tileSize || 512;
     this.maximumLevel = options.maximumLevel || Number.MAX_SAFE_INTEGER;
     this.minimumLevel = options.minimumLevel || 0;
@@ -63,6 +65,10 @@ class MapboxVectorProvider extends BaseVectorProvider {
   transformRequest(url, type) {
     // A transform request function for Mapbox styles
     // There has got to be a better way to do this...
+    if (this.forceHTTPS) {
+      url = url.replace("http://", "https://");
+    }
+
     if (!url.startsWith("mapbox://")) {
       return { url };
     }

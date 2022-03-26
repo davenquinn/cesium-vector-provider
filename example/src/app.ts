@@ -45,7 +45,8 @@ function VisControl({ show, setShown, name }) {
 }
 
 function App() {
-  const style = "mapbox://styles/jczaplewski/cjftzyqhh8o5l2rqu4k68soub";
+  // next, figure out labels: mapbox://styles/jczaplewski/cl16w70qs000015qd8aw9sea5
+  const style = "mapbox://styles/jczaplewski/cklb8aopu2cnv18mpxwfn7c9n";
   const accessToken = process.env.MAPBOX_API_TOKEN;
   const [showWireframe, setShowWireframe] = useState(false);
   const [showInspector, setShowInspector] = useState(false);

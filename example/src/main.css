@@ -1,7 +1,3 @@
-.cesium-cesiumInspector {
-  transform: translate(0, 70px);
-}
-
 html,
 body {
   margin: 0;
@@ -113,8 +109,4 @@ ul.controls {
 .mapbox-logo {
   display: block !important;
   margin-left: 8px;
-}
-
-.cesium-cesiumInspector {
-  transform: unset !important;
 }
