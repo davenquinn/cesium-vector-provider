@@ -48,7 +48,7 @@ but they use CPU-based rendering of only the basic aspects of the vector-tile sp
 This project seeks to support vector tiles with as much "drop-in" support for Mapbox approaches as is practicable.
 
 The advent of the community-led Maplibre project has significantly improved the prospects for
-sustainable integration with a high-performance vector tile rendere.
+sustainable integration with a high-performance vector tile renderer.
 While this module still uses a [custom fork of Maplibre GL JS](https://github.com/davenquinn/maplibre-gl-js), it has
 been brought up to date with the modern `v2` series.
 Once we build a better sense of the minimal set of hooks we need to make this integration work,
@@ -74,7 +74,7 @@ pixelated output, and is ineffective for dynamically modifying the map (e.g., fo
   renderer does not support overzooming as in the Mapbox stack, leading to visually poorer results.
 - Cooperation with Cesium-Martini on caching and request management will increase
   efficiency of the globe view and improve configurability.
-- It'd be nice to align the approaches used here with Cesium's first-party 3D Tiles stack, which attempts to support some similar use cases as Mapbox's 2D vector tiles stack.
+- It'd be nice to align the approaches used here with Cesium's first-party 3D Tiles stack, which is intended to fill similar use cases as Mapbox's 2D vector tiles stack.
 
 To improve all of these aspects, it is likely that this module will seek to
 shift from a single Imagery Provider to a more "direct" WebGL or material-based
