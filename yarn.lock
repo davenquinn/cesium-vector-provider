@@ -14188,6 +14188,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"maplibre-canvas-renderer@workspace:packages/maplibre-canvas-renderer":
+  version: 0.0.0-use.local
+  resolution: "maplibre-canvas-renderer@workspace:packages/maplibre-canvas-renderer"
+  languageName: unknown
+  linkType: soft
+
 "maplibre-gl@npm:*":
   version: 2.4.0
   resolution: "maplibre-gl@npm:2.4.0"

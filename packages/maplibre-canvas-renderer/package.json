@@ -1,0 +1,7 @@
+{
+  "name": "maplibre-canvas-renderer",
+  "version": "1.0.0",
+  "description": "A canvas renderer for MapLibre GL JS",
+  "main": "src/index.ts",
+  "private": true
+}
