@@ -21,10 +21,14 @@ module.exports = {
       cesiumSource,
       "@macrostrat/map-panel": packageSrc("map-panel"),
       "maplibre-gl": path.resolve(__dirname, "..", "packages", "maplibre-gl"),
-      react: path.resolve(__dirname, "node_modules", "react"),
-      "react-dom": path.resolve(__dirname, "node_modules", "react-dom"),
     },
-    fallback: { path: false },
+    fallback: {
+      path: false,
+      https: false,
+      zlib: false,
+      http: false,
+      url: false,
+    },
   },
   module: {
     unknownContextCritical: false,
@@ -39,22 +43,11 @@ module.exports = {
         use: ["file-loader"],
       },
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
-      // // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        loader: "source-map-loader",
-      },
       {
         test: /\.glsl$/,
         loader: "webpack-glsl-loader",
       },
       // https://github.com/CesiumGS/cesium/issues/9790#issuecomment-943773870
-      {
-        test: /.js$/,
-        include: cesiumSource,
-        use: { loader: require.resolve("@open-wc/webpack-import-meta-loader") },
-      },
     ],
   },
   entry: {
@@ -71,15 +64,17 @@ module.exports = {
     new HtmlWebpackPlugin({ title: "Mapbox / Cesium Vector Provider" }),
     new CopyPlugin({
       patterns: [
-        { from: path.join(cesiumSource, cesiumWorkers), to: "Workers" },
-        { from: path.join(cesiumSource, "Assets"), to: "Assets" },
-        { from: path.join(cesiumSource, "Widgets"), to: "Widgets" },
+        { from: path.join(cesiumSource, cesiumWorkers), to: "cesium/Workers" },
+        { from: path.join(cesiumSource, "Assets"), to: "cesium/Assets" },
+        { from: path.join(cesiumSource, "Widgets"), to: "cesium/Widgets" },
       ],
     }),
     new DotenvPlugin(),
     new DefinePlugin({
       // Define relative base path in cesium for loading assets
-      CESIUM_BASE_URL: JSON.stringify(process.env.PUBLIC_PATH ?? "/"),
+      CESIUM_BASE_URL: JSON.stringify(
+        (process.env.PUBLIC_PATH ?? "/") + "cesium"
+      ),
     }),
   ],
 };

@@ -1,3 +1,12 @@
 node_modules
 dist
 .env
+
+# For yarn v2 with Plug'n'Play
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
