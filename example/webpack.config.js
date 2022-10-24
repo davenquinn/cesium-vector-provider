@@ -10,8 +10,6 @@ const cesiumWorkers = "../Build/CesiumUnminified/Workers";
 
 const packageSrc = (name) => path.resolve(__dirname, "deps", name, "src");
 
-console.log(process.env.PUBLIC_PATH);
-
 module.exports = {
   mode: "development",
   // Enable sourcemaps for debugging webpack's output.
@@ -46,6 +44,10 @@ module.exports = {
         enforce: "pre",
         test: /\.js$/,
         loader: "source-map-loader",
+      },
+      {
+        test: /\.glsl$/,
+        loader: "webpack-glsl-loader",
       },
       // https://github.com/CesiumGS/cesium/issues/9790#issuecomment-943773870
       {

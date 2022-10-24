@@ -20,6 +20,5 @@
   "workspaces": [
     "packages/*"
   ],
-  "devDependencies": {},
   "prettier": {}
 }
