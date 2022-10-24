@@ -18,8 +18,9 @@
     "maplibre-gl": "*"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "example"
   ],
-  "devDependencies": {},
-  "prettier": {}
+  "prettier": {},
+  "packageManager": "yarn@3.2.4"
 }
