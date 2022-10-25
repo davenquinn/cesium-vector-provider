@@ -17,7 +17,6 @@ codebase.
 - [Mars lab](https://argyre.geoscience.wisc.edu/app) planetary GIS application
 - [Syrtis-Jezero](https://dev.macrostrat.org/mars/syrtis-jezero) story map
 
-
 ## Motivation and prior art
 
 This module allows excellent Cesium 3D geospatial
@@ -29,7 +28,7 @@ vector maps with Cesium capabilities such as 3D tiles and point clouds.
 
 This module is part of an effort to build a customizable, open-source "Google Earth"-style digital globe software stack that can form the basis for
 dynamic, high-resolution Earth science landscape visualization needs.
-Together with [Cesium-Martini](https://github.com/davenquinn/cesium-martini), which builds 3D terrain from tiled rasters, this module will 
+Together with [Cesium-Martini](https://github.com/davenquinn/cesium-martini), which builds 3D terrain from tiled rasters, this module will
 enable 3D views atop a variety of source datasets.
 At [Macrostrat](https://macrostrat.org), we hope to use this system to
 give context to [Earth](https://dev.macrostrat.org/next/web/globe) and
@@ -51,24 +50,21 @@ The advent of the community-led Maplibre project has significantly improved the 
 sustainable integration with a high-performance vector tile renderer.
 While this module still uses a [custom fork of Maplibre GL JS](https://github.com/davenquinn/maplibre-gl-js), it has
 been brought up to date with the modern `v2` series.
-Once we build a better sense of the minimal set of hooks we need to make this integration work,
-we will seek to merge these changes back to the Maplibre GL codebase
-or create a
-standalone module that sits atop Maplibre's API. Both of these
-approaches would yield a set of flexible rendering hooks that
-could be adapted for use in other contexts. Check out the [tracking issue](https://github.com/maplibre/maplibre-gl-js/issues/166) at Maplibre GL
+Currently, we compile Maplibre GL's renderers and shaders into `cesium-vector-provider`, allowing the module to stand alone.
+Until our interaction with Maplibre stabilizes, this module will remain pinned to a specific version of that project.
+Check out the [tracking issue](https://github.com/maplibre/maplibre-gl-js/issues/166) at Maplibre GL
 for more information.
 
 ## Current limitations and areas of future development
 
-**This is early beta software and much improvement is needed before it can be reliably used. I am excited to receive contributions!**
+**Note:** As of version `2.0.0`, many of the initial issues with this module have been
+resolved, or have a clear roadmap to a solution. Future updates will focus on adding label support,
+as well as reactivity, fidelity, and efficiency.
 
-- As mentioned above, this module uses a custom fork of Maplibre GL JS that adds basic rendering functionality. The necessary APIs need to either be included upstream or spun out into a wrapping module.
-- Currently, shader compilation in Maplibre GL requires a separate compilation
-  step for our Maplibre custom fork.
+- Tthis module uses a custom fork of Maplibre GL JS, but we are in the process of minimizing differences in hopes of merging with the upstream project.
 - Vector tile rendering currently uses a tile-based backend (separate renders are
-conducted for each map tile requested by Cesium). This is inefficient, yields
-pixelated output, and is ineffective for dynamically modifying the map (e.g., for filtering).
+  conducted for each map tile requested by Cesium). This is inefficient, yields
+  pixelated output, and is ineffective for dynamically modifying the map (e.g., for filtering).
 - Labels and other viewport-oriented content are not yet supported.
 - Hillshade support is still at a "proof of concept" stage, and the hillshade
   renderer does not support overzooming as in the Mapbox stack, leading to visually poorer results.

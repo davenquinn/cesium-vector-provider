@@ -1,13 +1,13 @@
 {
-  "name": "@macrostrat/cesium-vector-provider",
-  "version": "1.0.0",
+  "name": "@macrostrat/cesium-vector-provider-workspace",
+  "version": "2.0.0",
   "description": "",
-  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "cd example && webpack serve",
-    "build": "npm --prefix packages/maplibre-gl run build-prod-min && npm --prefix example run build",
+    "build": "yarn workspace @macrostrat/cesium-vector-provider run build",
     "deploy": "./scripts/deploy",
+    "publish": "yarn workspace @macrostrat/cesium-vector-provider npm publish",
     "dev": "npm --prefix packages/maplibre-gl run watch-dev & npm run watch",
     "bootstrap": "scripts/setup"
   },
@@ -15,12 +15,18 @@
   "license": "ISC",
   "dependencies": {
     "cesium": "^1.81.0",
-    "maplibre-gl": "*"
+    "maplibre-canvas-renderer": "workspace:*",
+    "maplibre-gl": "workspace:*"
+  },
+  "devDependencies": {
+    "@parcel/packager-ts": "2.7.0",
+    "@parcel/transformer-glsl": "2.7.0",
+    "@parcel/transformer-typescript-types": "2.7.0",
+    "parcel": "^2.7.0",
+    "typescript": ">=3.0.0"
   },
   "workspaces": [
-    "packages/*",
-    "example"
+    "packages/*"
   ],
-  "prettier": {},
-  "packageManager": "yarn@3.2.4"
+  "prettier": {}
 }

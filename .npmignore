@@ -1,0 +1,10 @@
+packages
+img
+scripts
+example
+.yarn
+.parcel-cache
+.pnp*
+node_modules
+package-lock.json
+yarn.lock

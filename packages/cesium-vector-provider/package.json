@@ -1,0 +1,36 @@
+{
+  "name": "@macrostrat/cesium-vector-provider",
+  "version": "2.0.0",
+  "description": "",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build",
+    "prepack": "yarn run build"
+  },
+  "author": "Daven Quinn",
+  "license": "ISC",
+  "dependencies": {
+    "cesium": "^1.81.0",
+    "maplibre-canvas-renderer": "workspace:*",
+    "maplibre-gl": "workspace:*"
+  },
+  "targets": {
+    "main": {
+      "includeNodeModules": {
+        "maplibre-gl": true,
+        "maplibre-canvas-renderer": true
+      }
+    },
+    "module": {
+      "includeNodeModules": {
+        "maplibre-gl": true,
+        "maplibre-canvas-renderer": true
+      }
+    }
+  },
+  "packageManager": "yarn@3.2.4"
+}
