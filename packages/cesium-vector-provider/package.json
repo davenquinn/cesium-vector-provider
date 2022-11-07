@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build",
-    "prepack": "yarn run build"
+    "prepack": "parcel build"
   },
   "author": "Daven Quinn",
   "license": "ISC",
