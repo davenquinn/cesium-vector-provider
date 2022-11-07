@@ -47,5 +47,6 @@
     "webpack-dev-server": "^4.7.1",
     "webpack-glsl-loader": "^1.0.1"
   },
-  "prettier": {}
+  "prettier": {},
+  "browserslist": "defaults, not ie 11"
 }
