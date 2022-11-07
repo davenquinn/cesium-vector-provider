@@ -13,11 +13,6 @@
   },
   "author": "Daven Quinn",
   "license": "ISC",
-  "dependencies": {
-    "cesium": "^1.81.0",
-    "maplibre-canvas-renderer": "workspace:*",
-    "maplibre-gl": "workspace:*"
-  },
   "devDependencies": {
     "@parcel/packager-ts": "2.7.0",
     "@parcel/transformer-glsl": "2.7.0",
