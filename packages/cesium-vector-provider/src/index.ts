@@ -69,7 +69,13 @@ class MapboxVectorProvider extends BaseVectorProvider {
       url = url.replace("http://", "https://");
     }
 
+    console.log(url);
+
     if (!url.startsWith("mapbox://")) {
+      if (url.includes("mapbox.com")) {
+        url += `?access_token=${this.accessToken}`;
+      }
+
       return { url };
     }
 

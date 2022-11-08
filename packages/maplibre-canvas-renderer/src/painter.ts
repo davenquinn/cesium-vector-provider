@@ -1,4 +1,7 @@
 import Painter from "maplibre-gl/src/render/painter";
+import CrossTileSymbolIndex from "maplibre-gl/src/symbol/cross_tile_symbol_index";
+import Context from "maplibre-gl/src/gl/context";
+import SourceCache from "maplibre-gl/src/source/source_cache";
 
 var layerStylesheetFromLayer = (layer) =>
   layer &&
@@ -12,13 +15,29 @@ class BasicPainter extends Painter {
   context: any;
   constructor(gl, transform) {
     super(gl, transform);
+    this.context = new Context(gl);
+    this.transform = transform;
+    this._tileTextures = {};
+
+    this.setup();
+
+    // Within each layer there are multiple distinct z-planes that can be drawn to.
+    // This is implemented using the WebGL depth buffer.
+    this.numSublayers =
+      SourceCache.maxUnderzooming + SourceCache.maxOverzooming + 1;
+    this.depthEpsilon = 1 / Math.pow(2, 16);
+
+    this.crossTileSymbolIndex = new CrossTileSymbolIndex();
+
+    this.gpuTimers = {};
+
     this._filterForZoom = 15;
   }
   resize(width, height) {
-    const gl = this.context.gl;
     this.width = width;
     this.height = height;
-    gl.viewport(0, 0, this.width, this.height);
+
+    this.context.gl.viewport(0, 0, this.width, this.height);
   }
   // renderLayer(painter, sourceCache, layer, coords) {
   //   let layerStylesheet = layerStylesheetFromLayer(layer);
