@@ -58,10 +58,11 @@ for more information.
 ## Current limitations and areas of future development
 
 **Note:** As of version `2.0.0`, many of the initial issues with this module have been
-resolved, or have a clear roadmap to a solution. Future updates will focus on adding label support,
+resolved, or have a clear roadmap to resolution. Notably, the module _no longer uses a
+custom fork_ of Maplibre GL JS. It does still use an outdated version (`2.0.0.pre6`) and internal APIs,
+though. Future updates will focus on adding label support,
 as well as reactivity, fidelity, and efficiency.
 
-- Tthis module uses a custom fork of Maplibre GL JS, but we are in the process of minimizing differences in hopes of merging with the upstream project.
 - Vector tile rendering currently uses a tile-based backend (separate renders are
   conducted for each map tile requested by Cesium). This is inefficient, yields
   pixelated output, and is ineffective for dynamically modifying the map (e.g., for filtering).

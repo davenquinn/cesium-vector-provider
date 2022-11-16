@@ -2,13 +2,13 @@
   "name": "@macrostrat/cesium-vector-provider-workspace",
   "version": "2.0.0",
   "description": "",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "cd example && webpack serve",
     "build": "yarn workspace @macrostrat/cesium-vector-provider run build",
     "deploy": "./scripts/deploy",
     "publish": "yarn workspace @macrostrat/cesium-vector-provider npm publish --access=public",
-    "dev": "npm --prefix packages/maplibre-gl run watch-dev & npm run watch",
+    "dev": "yarn workspace cesium-vector-provider-example run dev",
     "bootstrap": "scripts/setup"
   },
   "author": "Daven Quinn",

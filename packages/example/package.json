@@ -20,9 +20,9 @@
   "license": "ISC",
   "dependencies": {
     "@macrostrat/cesium-martini": "^1.2.3",
-    "@macrostrat/cesium-viewer": "^1.0.2",
+    "@macrostrat/cesium-viewer": "^1.1.0",
     "cesium": "^1.81.0",
-    "mapbox-gl": "^2.10.0",
+    "mapbox-gl": "^2.11.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

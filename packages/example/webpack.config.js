@@ -20,7 +20,6 @@ module.exports = {
       cesium,
       cesiumSource,
       "@macrostrat/map-panel": packageSrc("map-panel"),
-      "maplibre-gl": path.resolve(__dirname, "..", "packages", "maplibre-gl"),
     },
     fallback: {
       path: false,

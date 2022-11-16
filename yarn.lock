@@ -2167,16 +2167,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@macrostrat/cesium-vector-provider@workspace:packages/cesium-vector-provider"
   dependencies:
-    "@parcel/core": ^2.7.0
     cesium: ^1.81.0
   languageName: unknown
   linkType: soft
 
-"@macrostrat/cesium-viewer@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@macrostrat/cesium-viewer@npm:1.0.2"
+"@macrostrat/cesium-viewer@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@macrostrat/cesium-viewer@npm:1.1.0"
   dependencies:
     "@macrostrat/hyper": ^2.0.1
+    "@macrostrat/mapbox-utils": ^1.1.1
     "@znemz/cesium-navigation": ^4.0.0
     cesium: ^1.81.0
     d3-format: ^3.1.0
@@ -2184,7 +2184,7 @@ __metadata:
   peerDependencies:
     react: ^16||^17
     react-dom: ^17.0.2
-  checksum: 3e84b7e0b28861cb8398d4a2ebbceb0d025d74e6562762b79b4db7d5bc6ccfc76416ed33f158042ec08fdffceb217cc3a668f578a444b2d256ccc6ccac93d49d
+  checksum: fa63775887772daced4a5462a4eb27486b3ab159822fd85daa7517e527dc22a4bf89dd05aa93ffac9f086fa2b78166dbe9e26accf9580955f97744076ce4a698
   languageName: node
   linkType: hard
 
@@ -2200,6 +2200,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@macrostrat/mapbox-utils@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@macrostrat/mapbox-utils@npm:1.1.1"
+  dependencies:
+    "@types/mapbox-gl": ^2.7.5
+    axios: ^0.27.2
+    mapbox-gl: ^2.0.0
+  checksum: d7c94bc236b5e7ce20debe933a0a1f151b062f31b6e7f13e7c641b12aa48e8393a69660a5e7ef53533187809f8437ad8f0fce3ba186ebc72ffe9e5d6410b4a36
+  languageName: node
+  linkType: hard
+
 "@mapbox/gazetteer@npm:^5.1.0":
   version: 5.1.0
   resolution: "@mapbox/gazetteer@npm:5.1.0"
@@ -2210,7 +2221,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mapbox/geojson-rewind@npm:^0.5.0, @mapbox/geojson-rewind@npm:^0.5.1":
+"@mapbox/geojson-rewind@npm:^0.5.0, @mapbox/geojson-rewind@npm:^0.5.2":
   version: 0.5.2
   resolution: "@mapbox/geojson-rewind@npm:0.5.2"
   dependencies:
@@ -2219,13 +2230,6 @@ __metadata:
   bin:
     geojson-rewind: geojson-rewind
   checksum: 721470ab5e8912d69aef06fa4db891bade8b028d6708a35a982b1dfec0f40eb4ba05a749258867f5844cf4e776e53866813bf9c97e3289054b21cbf7840d3608
-  languageName: node
-  linkType: hard
-
-"@mapbox/geojson-types@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@mapbox/geojson-types@npm:1.0.2"
-  checksum: ab1fa0afcedb384aea39b25218b74dd823fc86929c5df5f15fbebac1d98eb30c16f4dded7199999c99d23a0a5f36c6e3380aad91adc736c302a94adbd3980ace
   languageName: node
   linkType: hard
 
@@ -2329,13 +2333,6 @@ __metadata:
   version: 2.0.5
   resolution: "@mapbox/tiny-sdf@npm:2.0.5"
   checksum: 23fd158ea795592cf1f825fcac20d48230c54a6985a931f609af8b4e69cd99f1c798dc893baec63f4fd6f42ffc3e7292b39f4126966412edd4606eb3dbf86b54
-  languageName: node
-  linkType: hard
-
-"@mapbox/unitbezier@npm:^0.0.0":
-  version: 0.0.0
-  resolution: "@mapbox/unitbezier@npm:0.0.0"
-  checksum: 22ae6d56f743570fb222a5b0d323398e342007f689ae6445b6238d60a2faaa312b41c1de1fb2553bca4ccdb2d3f7006af04d94457c54b44a6454ce0198eebf9e
   languageName: node
   linkType: hard
 
@@ -4364,6 +4361,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/mapbox-gl@npm:^2.7.5":
+  version: 2.7.8
+  resolution: "@types/mapbox-gl@npm:2.7.8"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: 6ace8cd3bc3767b751d70fbd21c8b29caaa409eed80fc11e86844b9639b440d49aaaf7b421accd49de1edf47ec1280eff3edee6bcfbc4b06f768b0591aae0758
+  languageName: node
+  linkType: hard
+
 "@types/mdast@npm:^3.0.0":
   version: 3.0.10
   resolution: "@types/mdast@npm:3.0.10"
@@ -5959,6 +5965,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^0.27.2":
+  version: 0.27.2
+  resolution: "axios@npm:0.27.2"
+  dependencies:
+    follow-redirects: ^1.14.9
+    form-data: ^4.0.0
+  checksum: 38cb7540465fe8c4102850c4368053c21683af85c5fdf0ea619f9628abbcb59415d1e22ebc8a6390d2bbc9b58a9806c874f139767389c862ec9b772235f06854
+  languageName: node
+  linkType: hard
+
 "babel-core@npm:^7.0.0-bridge.0":
   version: 7.0.0-bridge.0
   resolution: "babel-core@npm:7.0.0-bridge.0"
@@ -7012,7 +7028,7 @@ __metadata:
     "@babel/preset-env": ^7.19.4
     "@babel/preset-typescript": ^7.18.6
     "@macrostrat/cesium-martini": ^1.2.3
-    "@macrostrat/cesium-viewer": ^1.0.2
+    "@macrostrat/cesium-viewer": ^1.1.0
     "@macrostrat/hyper": ^2.0.1
     babel-loader: ^8.2.3
     cesium: ^1.81.0
@@ -7022,7 +7038,7 @@ __metadata:
     dotenv-webpack: ^7.0.3
     file-loader: ^6.2.0
     html-webpack-plugin: ^5.5.0
-    mapbox-gl: ^2.10.0
+    mapbox-gl: ^2.11.0
     react: ^17.0.2
     react-dom: ^17.0.2
     regenerator-runtime: ^0.13.9
@@ -10756,7 +10772,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.0":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.14.9":
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
@@ -10828,6 +10844,17 @@ __metadata:
     combined-stream: ^1.0.8
     mime-types: ^2.1.12
   checksum: b019e8d35c8afc14a2bd8a7a92fa4f525a4726b6d5a9740e8d2623c30e308fbb58dc8469f90415a856698933c8479b01646a9dff33c87cc4e76d72aedbbf860d
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "form-data@npm:4.0.0"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    mime-types: ^2.1.12
+  checksum: 01135bf8675f9d5c61ff18e2e2932f719ca4de964e3be90ef4c36aacfc7b9cb2fceb5eca0b7e0190e3383fe51c5b37f4cb80b62ca06a99aaabfcfd6ac7c9328c
   languageName: node
   linkType: hard
 
@@ -15357,17 +15384,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mapbox-gl@npm:^2.10.0":
-  version: 2.10.0
-  resolution: "mapbox-gl@npm:2.10.0"
+"mapbox-gl@npm:^2.0.0, mapbox-gl@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "mapbox-gl@npm:2.11.0"
   dependencies:
-    "@mapbox/geojson-rewind": ^0.5.1
-    "@mapbox/geojson-types": ^1.0.2
+    "@mapbox/geojson-rewind": ^0.5.2
     "@mapbox/jsonlint-lines-primitives": ^2.0.2
     "@mapbox/mapbox-gl-supported": ^2.0.1
     "@mapbox/point-geometry": ^0.1.0
     "@mapbox/tiny-sdf": ^2.0.5
-    "@mapbox/unitbezier": ^0.0.0
+    "@mapbox/unitbezier": ^0.0.1
     "@mapbox/vector-tile": ^1.3.1
     "@mapbox/whoots-js": ^3.1.0
     csscolorparser: ~1.0.3
@@ -15377,13 +15403,13 @@ __metadata:
     grid-index: ^1.1.0
     murmurhash-js: ^1.0.0
     pbf: ^3.2.1
-    potpack: ^1.0.2
+    potpack: ^2.0.0
     quickselect: ^2.0.0
     rw: ^1.3.3
-    supercluster: ^7.1.4
+    supercluster: ^7.1.5
     tinyqueue: ^2.0.3
     vt-pbf: ^3.1.3
-  checksum: e96230b5695a79bb83241028e25ef3c562beffd9c60ac68c78a5fe3f021d1b51e314b43a8c95d4b73da8ef97ac6386b3489319164740e3b84e8188ee3cad8ed9
+  checksum: bc2ee6240a1097265ccf87d13bd50f7ea25be68a9a3cb56e9f91db8c7b88c4bf31348a49edd640b0d817026dfea9354040c3a4b2aab7adba1b9f0341f7701052
   languageName: node
   linkType: hard
 
@@ -18567,10 +18593,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"potpack@npm:^1.0.1, potpack@npm:^1.0.2":
+"potpack@npm:^1.0.1":
   version: 1.0.2
   resolution: "potpack@npm:1.0.2"
   checksum: 9dfdbbce012ce80842249abcdd89e20222eb8ae96beba8d578b7e41e78feefc7e33b5c72d46fb8dd3a1e382cb4da9c34574764d88aa8849ab36f542fd2088b42
+  languageName: node
+  linkType: hard
+
+"potpack@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "potpack@npm:2.0.0"
+  checksum: 6dd41692349936b436c29c28cf9ff1268c03ed6ec96c4384b2d9eb95e58e422fab75d428648f475507dd167934984d1002df2010b83e5747b5c358bea371e8f7
   languageName: node
   linkType: hard
 
@@ -21605,7 +21638,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supercluster@npm:^7.1.0, supercluster@npm:^7.1.4":
+"supercluster@npm:^7.1.0, supercluster@npm:^7.1.5":
   version: 7.1.5
   resolution: "supercluster@npm:7.1.5"
   dependencies:
