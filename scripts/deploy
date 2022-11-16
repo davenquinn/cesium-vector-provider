@@ -1,4 +1,17 @@
 #!/usr/bin/env bash
+set -e
+
+# Build the project
+yarn run build
+
+# Now build example
+pushd packages/example
 export PUBLIC_PATH="/viz/cesium-vector-provider/"
-npm run build
-rclone sync example/dist/ davenquinn-spaces:davenquinn-sites/viz/cesium-vector-provider/
+yarn run build
+
+# Deploy the example
+rclone sync dist/ davenquinn-spaces:davenquinn-sites/viz/cesium-vector-provider/
+popd
+
+# Deploy the project
+yarn run publish

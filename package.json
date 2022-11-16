@@ -8,8 +8,7 @@
     "build": "yarn workspace @macrostrat/cesium-vector-provider run build",
     "deploy": "./scripts/deploy",
     "publish": "yarn workspace @macrostrat/cesium-vector-provider npm publish --access=public",
-    "dev": "yarn workspace cesium-vector-provider-example run dev",
-    "bootstrap": "scripts/setup"
+    "dev": "yarn workspace cesium-vector-provider-example run dev"
   },
   "author": "Daven Quinn",
   "license": "ISC",
