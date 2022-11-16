@@ -1,31 +1,13 @@
 import h from "@macrostrat/hyper";
 import CesiumView from "./main";
-import Map, { MapPosition } from "@macrostrat/map-panel";
+import Map from "./map";
+import { MapPosition } from "@macrostrat/mapbox-utils";
 import { useState, useMemo } from "react";
 import {
-  CameraParams,
-  nadirCameraParams,
   flyToParams,
   ViewInfo,
+  translateCameraPosition,
 } from "@macrostrat/cesium-viewer";
-
-function translateCameraPosition(pos: MapPosition): CameraParams {
-  const { bearing = 0, pitch, altitude } = pos.camera;
-  const { zoom } = pos.target ?? {};
-  if (bearing == 0 && pitch == 0 && zoom != null) {
-    const { lng, lat } = pos.target;
-    return nadirCameraParams(lng, lat, zoom);
-  } else {
-    return {
-      longitude: pos.camera.lng,
-      latitude: pos.camera.lat,
-      height: altitude,
-      heading: bearing,
-      pitch: -90 + (pitch ?? 0),
-      roll: 0,
-    };
-  }
-}
 
 function VisControl({ show, setShown, name }) {
   const className = show ? "active" : "";

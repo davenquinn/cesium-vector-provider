@@ -8,8 +8,6 @@ const cesium = path.dirname(require.resolve("cesium"));
 const cesiumSource = path.join(cesium, "Source");
 const cesiumWorkers = "../Build/CesiumUnminified/Workers";
 
-const packageSrc = (name) => path.resolve(__dirname, "deps", name, "src");
-
 module.exports = {
   mode: "development",
   // Enable sourcemaps for debugging webpack's output.
@@ -19,8 +17,6 @@ module.exports = {
     alias: {
       cesium,
       cesiumSource,
-      "@macrostrat/map-panel": packageSrc("map-panel"),
-      "maplibre-gl": path.resolve(__dirname, "..", "packages", "maplibre-gl"),
     },
     fallback: {
       path: false,

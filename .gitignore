@@ -1,6 +1,7 @@
 node_modules
 dist
 .env
+.parcel-cache
 
 # For yarn v2 with Plug'n'Play
 .pnp.*
