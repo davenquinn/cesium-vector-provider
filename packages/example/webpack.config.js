@@ -27,7 +27,6 @@ module.exports = {
     },
   },
   module: {
-    unknownContextCritical: false,
     rules: [
       {
         test: /\.(js|jsx|ts|tsx)$/,
@@ -39,10 +38,6 @@ module.exports = {
         use: ["file-loader"],
       },
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
-      {
-        test: /\.glsl$/,
-        loader: "webpack-glsl-loader",
-      },
       // https://github.com/CesiumGS/cesium/issues/9790#issuecomment-943773870
     ],
   },

@@ -2230,7 +2230,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@macrostrat/cesium-vector-provider@workspace:packages/cesium-vector-provider":
+"@macrostrat/cesium-vector-provider@2.0.2, @macrostrat/cesium-vector-provider@workspace:packages/cesium-vector-provider":
   version: 0.0.0-use.local
   resolution: "@macrostrat/cesium-vector-provider@workspace:packages/cesium-vector-provider"
   dependencies:
@@ -7157,6 +7157,7 @@ __metadata:
     "@babel/preset-env": ^7.19.4
     "@babel/preset-typescript": ^7.18.6
     "@macrostrat/cesium-martini": ^1.2.3
+    "@macrostrat/cesium-vector-provider": 2.0.2
     "@macrostrat/cesium-viewer": ^1.1.0
     "@macrostrat/hyper": ^2.0.1
     "@macrostrat/mapbox-react": ^1.1.0
