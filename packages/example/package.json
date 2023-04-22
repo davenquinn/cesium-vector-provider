@@ -19,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@macrostrat/cesium-martini": "^1.2.3",
+    "@macrostrat/cesium-vector-provider": "2.0.2",
     "@macrostrat/cesium-viewer": "^1.1.0",
     "@macrostrat/hyper": "^2.0.1",
     "@macrostrat/mapbox-react": "^1.1.0",

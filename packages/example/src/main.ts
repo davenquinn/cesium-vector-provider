@@ -1,6 +1,6 @@
 const Cesium = require("cesiumSource/Cesium");
 // Import @types/cesium to use along with CesiumJS
-import MVTImageryProvider from "../../cesium-vector-provider/src";
+import VectorProvider from "@macrostrat/cesium-vector-provider";
 import TerrainProvider from "@macrostrat/cesium-martini";
 import { useRef } from "react";
 import h from "@macrostrat/hyper";
@@ -23,7 +23,7 @@ const terrainProvider = new TerrainProvider({
 function BaseLayer({ enabled = true, style, accessToken, ...rest }) {
   console.log(style);
   const provider = useRef(
-    new MVTImageryProvider({
+    new VectorProvider({
       style,
       showCanvas: false,
       maximumZoom: 15,
