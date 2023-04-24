@@ -9,13 +9,31 @@ digital globe, based on [Maplibre GL JS](https://maplibre.org/), a
 community-supported fork of [Mapbox](https://mapbox.org)'s legacy web mapping
 codebase.
 
+The compiled module can be found on NPM at [`cesium-vector-provider`](https://npmjs.org/packages/cesium-vector-provider).
+As of version 2, the module contains its own copy of Maplibre GL JS. We expect this to change in future versions.
+
 ## Quick links
 
 - [Demo website](https://davenquinn.com/viz/cesium-vector-provider) for this module
 - [Cesium-Martini](https://github.com/davenquinn/cesium-martini) (dynamic terrain meshing from raster DEMs)
-- [Macrostrat globe prototype](https://dev.macrostrat.org/next/web/globe)
 - [Mars lab](https://argyre.geoscience.wisc.edu/app) planetary GIS application
-- [Syrtis-Jezero](https://dev.macrostrat.org/mars/syrtis-jezero) story map
+- [Macrostrat globe prototype](https://dev.macrostrat.org/next/web/globe) (*Currently inoperable, April 2023*)
+- [Syrtis-Jezero](https://dev.macrostrat.org/mars/syrtis-jezero) story map (*Currently inoperable, April 2023*)
+
+
+## Installation
+
+This project is a relatively early demonstration and is not fully ready for production.
+It is based on Yarn version 3, with workspaces and "Plug'n'Play" enabled. Installation
+using NPM should also work, but is not well validated. Node version 16 or greater is recommended.
+To get up and running for development:
+
+1. Clone the repository
+2. `git submodule update --init` to get the requisite `maplibre-gl` dependency
+3. `yarn` to install.
+4. `yarn run dev` to run the demo application.
+
+To integrate the already-compiled module in an application, consult this [standalone example app](https://github.com/davenquinn/cesium-vector-provider-example-standalone-example) for installation guidance.
 
 ## Motivation and prior art
 
