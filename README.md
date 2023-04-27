@@ -18,8 +18,7 @@ As of version 2, the module contains its own copy of Maplibre GL JS. We expect t
 - [Cesium-Martini](https://github.com/davenquinn/cesium-martini) (dynamic terrain meshing from raster DEMs)
 - [Mars lab](https://argyre.geoscience.wisc.edu/app) planetary GIS application
 - [Macrostrat globe prototype](https://dev.macrostrat.org/next/web/globe) (*Currently inoperable, April 2023*)
-- [Syrtis-Jezero](https://dev.macrostrat.org/mars/syrtis-jezero) story map (*Currently inoperable, April 2023*)
-
+- [Syrtis-Jezero](https://dev.macrostrat.org/mars/syrtis-jezero/) story map
 
 ## Installation
 
